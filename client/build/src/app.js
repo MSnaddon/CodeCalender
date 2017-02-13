@@ -1,0 +1,1 @@
+var Riot = require('riot')
