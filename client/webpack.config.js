@@ -5,7 +5,7 @@ config = {
     path: "./build"
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js']
   },
   module:{
     loaders: [
@@ -19,7 +19,7 @@ config = {
       },
       {
        test: /\.tag$/,
-       loader: 'tag',
+       loader: 'tag-loader',
        exclude: /(node_modules|bower_components)/
       }
     ]
