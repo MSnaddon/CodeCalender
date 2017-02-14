@@ -1,6 +1,6 @@
 <ui>
 
-	<EventDisplay event='{opts.events[focusEvent]}'></EventDisplay>
+	<EventDisplay event='{ focusEvent }'></EventDisplay>
 
 
 	<EventList></EventList>
@@ -14,17 +14,17 @@
 
 	<script>
 	// mounting tags
-		require('./EventDisplay.tag')
-		require('./EventList.tag')
-		riot.mount('EventDisplay')
-		riot.mount('EventList')
+		require('./EventDisplay.tag');
+		require('./EventList.tag');
+		riot.mount('EventDisplay', {event: this.opts.events[0]});
+		riot.mount('EventList');
 
-		this.focusEvent = 0;
+		this.focusEvent = opts.events[0];
 
 		let self = this;
 		setInterval(function(){
-			self.update({ focusEvent: (self.focusEvent + 1) % self.opts.events.length})
-
+			let newFocus = self.opts.events[1]
+			self.update({ focusEvent: newFocus});
 		}, 10000)
 
 	</script>

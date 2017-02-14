@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2833,27 +2833,70 @@ Object.defineProperty(exports, '__esModule', { value: true });
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+module.exports = {
+	GET: function GET(url, callback) {
+		var request = new XMLHttpRequest();
+		request.open("GET", url);
+		request.onload = callback;
+		request.send();
+	}
+};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var riot = __webpack_require__(0);
 
-riot.tag2('ui', '<eventdisplay event="{opts.events[focusEvent]}"></EventDisplay> <eventlist></EventList>', '', '', function(opts) {
+riot.tag2('error', '<h1>something went wrong</h1>', '', '', function(opts) {
+});
 
-		__webpack_require__(3)
-		__webpack_require__(4)
-		riot.mount('EventDisplay')
-		riot.mount('EventList')
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
 
-		this.focusEvent = 0;
+var riot = __webpack_require__(0);
+
+riot.tag2('ui', '<eventdisplay event="{focusEvent}"></EventDisplay> <eventlist></EventList>', '', '', function(opts) {
+
+		__webpack_require__(4);
+		__webpack_require__(5);
+		riot.mount('EventDisplay', {event: this.opts.events[0]});
+		riot.mount('EventList');
+
+		this.focusEvent = opts.events[0];
 
 		let self = this;
 		setInterval(function(){
-			self.update({ focusEvent: (self.focusEvent + 1) % self.opts.events.length})
-
+			let newFocus = self.opts.events[1]
+			self.update({ focusEvent: newFocus});
 		}, 10000)
 
 });
 
 /***/ }),
-/* 2 */
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var riot = __webpack_require__(0);
+
+riot.tag2('eventdisplay', '<header id="display-title">{opts.event.title}</header> <article id="display-description">{opts.event.description}</article> <div each="{host, i in opts.event.hosts}" id="display-hosts">{host}</div> <div id="display-time"> Time: {opts.event.time} Date: {opts.event.date} </div>', '', '', function(opts) {
+});
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var riot = __webpack_require__(0);
+
+riot.tag2('eventlist', '<h2>Event list</h2>', '', '', function(opts) {
+});
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2863,14 +2906,14 @@ var _riot = __webpack_require__(0);
 
 var _riot2 = _interopRequireDefault(_riot);
 
-var _apiRequester = __webpack_require__(5);
+var _apiRequester = __webpack_require__(1);
 
 var _apiRequester2 = _interopRequireDefault(_apiRequester);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-__webpack_require__(1);
-__webpack_require__(6);
+__webpack_require__(3);
+__webpack_require__(2);
 
 window.onload = function () {
 
@@ -2885,49 +2928,6 @@ window.onload = function () {
 
 	// Riot.mount('ui')
 };
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var riot = __webpack_require__(0);
-
-riot.tag2('eventdisplay', '<header id="display-title"></header> <article id="display-description"></article> <div id="display-hosts"></div> <div id="display-time"></div>', '', '', function(opts) {
-});
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var riot = __webpack_require__(0);
-
-riot.tag2('eventlist', '<h2>Event list</h2>', '', '', function(opts) {
-});
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = {
-	GET: function GET(url, callback) {
-		var request = new XMLHttpRequest();
-		request.open("GET", url);
-		request.onload = callback;
-		request.send();
-	}
-};
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var riot = __webpack_require__(0);
-
-riot.tag2('error', '<h1>something went wrong</h1>', '', '', function(opts) {
-});
 
 /***/ })
 /******/ ]);
