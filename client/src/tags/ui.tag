@@ -1,9 +1,9 @@
 <ui>
 
-	<EventDisplay event='{ opts.events[focusEvent] }'></EventDisplay>
+	<EventDisplay focus-event="{ opts.events[focusEvent] }"></EventDisplay>
 
 
-	<EventList></EventList>
+	<EventList events="{opts.events}" focusIndex="{focusEvent}"></EventList>
 
 
 
@@ -14,10 +14,10 @@
 
 	<script>
 	// mounting tags
-		require('./EventDisplay.tag');
-		require('./EventList.tag');
-		riot.mount('EventDisplay');
-		riot.mount('EventList');
+		require("./EventDisplay.tag");
+		require("./EventList.tag");
+		riot.mount("EventDisplay");
+		riot.mount("EventList");
 
 		this.focusEvent = 0;
 
