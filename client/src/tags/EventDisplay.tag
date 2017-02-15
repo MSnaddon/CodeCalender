@@ -11,13 +11,14 @@
 		</ul>
 	</div>
 	<div id="display-time">
-		Time: {opts.focusEvent.time} 
-		Date: {opts.focusEvent.date}
+		{opts.getDateString(opts.focusEvent.date)} {opts.focusEvent.time}
 	</div>
 
 	<script>
-		console.log(opts)
+
 		
+
+
 	</script>
 
 

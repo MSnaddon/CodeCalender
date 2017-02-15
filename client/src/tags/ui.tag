@@ -1,6 +1,6 @@
 <ui>
 
-	<EventDisplay focus-event="{ opts.events[focusEvent] }"></EventDisplay>
+	<EventDisplay get-date-string ="{getDateString}" focus-event="{ opts.events[focusEvent] }"></EventDisplay>
 
 
 	<EventList events="{opts.events}" focusIndex="{focusEvent}"></EventList>
@@ -25,8 +25,22 @@
 		setInterval(function(){
 
 			self.update({ focusEvent: (self.focusEvent + 1) % self.opts.events.length});
-		}, 5000)
+		}, 1000)
 
+
+		//returns today, tomorrow or otherwise
+		this.getDateString = (date)=>{
+			//get the midnight time for the end of 'today'
+			let today = Math.ceil(new Date().getTime()/86400000)*86400000;
+			let eventDate = new Date(date);
+			if (eventDate.getTime() < today){
+				return "Today";
+			} 
+			else if(eventDate.getTime() < today + 86400000){
+				return "Tomorrow";
+			}
+			return ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"][eventDate.getDay()];
+		}
 	</script>
 
 </ui>
