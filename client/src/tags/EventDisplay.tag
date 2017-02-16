@@ -13,14 +13,4 @@
 	<div id="display-time">
 		{opts.getDateString(opts.focusEvent.date)} {opts.focusEvent.time}
 	</div>
-
-	<script>
-
-		
-
-
-	</script>
-
-
-
 </EventDisplay>

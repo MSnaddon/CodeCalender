@@ -1,15 +1,9 @@
 <ui>
 
-	<EventDisplay get-date-string ="{getDateString}" focus-event="{ opts.events[focusEvent] }"></EventDisplay>
+	<EventDisplay get-date-string={getDateString} focus-event="{ opts.events[focusEvent] }"></EventDisplay>
 
 
-	<EventList events="{opts.events}" focusIndex="{focusEvent}"></EventList>
-
-
-
-
-
-
+	<EventList get-date-string={getDateString} events="{opts.events}" focus-event={focusEvent}></EventList>
 
 
 	<script>
@@ -19,11 +13,11 @@
 		riot.mount("EventDisplay");
 		riot.mount("EventList");
 
+		//setting up focus event loop.
 		this.focusEvent = 0;
-
 		let self = this;
 		setInterval(function(){
-
+			//works similar to setState from react.
 			self.update({ focusEvent: (self.focusEvent + 1) % self.opts.events.length});
 		}, 1000)
 
@@ -33,13 +27,14 @@
 			//get the midnight time for the end of 'today'
 			let today = Math.ceil(new Date().getTime()/86400000)*86400000;
 			let eventDate = new Date(date);
+			//determine if today, tomorrow or which day of the week
 			if (eventDate.getTime() < today){
 				return "Today";
 			} 
 			else if(eventDate.getTime() < today + 86400000){
 				return "Tomorrow";
 			}
-			return ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"][eventDate.getDay()];
+			return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][eventDate.getDay()];
 		}
 	</script>
 

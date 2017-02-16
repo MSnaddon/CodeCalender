@@ -1,0 +1,18 @@
+*{
+	/*border:1px solid black;*/
+}
+
+ui{
+	padding:10px;
+	height:99vh;
+	display:flex;
+	flex-flow: row nowrap;
+}
+
+eventdisplay{
+	flex: 0 1 30%;
+}
+
+eventlist{
+	flex-grow: 2;
+}
