@@ -2860,21 +2860,33 @@ riot.tag2('error', '<h1>something went wrong</h1>', '', '', function(opts) {
 
 var riot = __webpack_require__(0);
 
-riot.tag2('ui', '<eventdisplay event="{opts.events[focusEvent]}"></EventDisplay> <eventlist></EventList>', '', '', function(opts) {
+riot.tag2('ui', '<eventdisplay get-date-string="{getDateString}" focus-event="{opts.events[focusEvent]}"></EventDisplay> <eventlist events="{opts.events}" focusindex="{focusEvent}"></EventList>', '', '', function(opts) {
 
-		__webpack_require__(4)
-		__webpack_require__(5)
-		riot.mount('EventDisplay')
-		riot.mount('EventList')
+		__webpack_require__(4);
+		__webpack_require__(5);
+		riot.mount("EventDisplay");
+		riot.mount("EventList");
 
 		this.focusEvent = 0;
 
 		let self = this;
 		setInterval(function(){
-			self.update({ focusEvent: (self.focusEvent + 1) % self.opts.events.length})
 
-		}, 10000)
+			self.update({ focusEvent: (self.focusEvent + 1) % self.opts.events.length});
+		}, 1000)
 
+		this.getDateString = (date)=>{
+
+			let today = Math.ceil(new Date().getTime()/86400000)*86400000;
+			let eventDate = new Date(date);
+			if (eventDate.getTime() < today){
+				return "Today";
+			}
+			else if(eventDate.getTime() < today + 86400000){
+				return "Tomorrow";
+			}
+			return ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"][eventDate.getDay()];
+		}
 });
 
 /***/ }),
@@ -2883,7 +2895,7 @@ riot.tag2('ui', '<eventdisplay event="{opts.events[focusEvent]}"></EventDisplay>
 
 var riot = __webpack_require__(0);
 
-riot.tag2('eventdisplay', '<header id="display-title"></header> <article id="display-description"></article> <div id="display-hosts"></div> <div id="display-time"></div>', '', '', function(opts) {
+riot.tag2('eventdisplay', '<header id="display-title">{opts.focusEvent.title}</header> <article id="display-description">{opts.focusEvent.description}</article> <div> Hosts: <ul> <li each="{host, i in opts.focusEvent.hosts}" id="display-hosts">{host}</li> </ul> </div> <div id="display-time"> {opts.getDateString(opts.focusEvent.date)} {opts.focusEvent.time} </div>', '', '', function(opts) {
 });
 
 /***/ }),
@@ -2893,6 +2905,11 @@ riot.tag2('eventdisplay', '<header id="display-title"></header> <article id="dis
 var riot = __webpack_require__(0);
 
 riot.tag2('eventlist', '<h2>Event list</h2>', '', '', function(opts) {
+		console.log(this.opts);
+
+		const todayEvents = this.opts.events.filter((event)=>{
+
+		})
 });
 
 /***/ }),
