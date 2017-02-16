@@ -1,9 +1,9 @@
 <ui>
 
-	<EventDisplay get-date-string ="{getDateString}" focus-event="{ opts.events[focusEvent] }"></EventDisplay>
+	<EventDisplay get-date-string={getDateString} focus-event="{ opts.events[focusEvent] }"></EventDisplay>
 
 
-	<EventList events="{opts.events}" focusIndex="{focusEvent}"></EventList>
+	<EventList get-date-string={getDateString} events="{opts.events}" focus-event={focusEvent}></EventList>
 
 
 
@@ -25,7 +25,7 @@
 		setInterval(function(){
 
 			self.update({ focusEvent: (self.focusEvent + 1) % self.opts.events.length});
-		}, 1000)
+		}, 10000)
 
 
 		//returns today, tomorrow or otherwise
