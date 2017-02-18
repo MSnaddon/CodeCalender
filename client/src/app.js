@@ -10,7 +10,8 @@ window.onload = ()=>{
 
 	apiRequester.GET('/api/events', function(req, rep){
 		if(!this.status===200) {
-			Riot.mount('error');
+			document.querySelector('body').innerHTML = `<error err=${this.status}></error>`
+			Riot.mount('error', {err: this.status});
 		}
 		else {
 			const data = JSON.parse(this.responseText);
