@@ -16,8 +16,8 @@
 	<style>
 		.event-list-focus{
 			background: rgba(255,255,255, 0.6);
-			padding:10px;
-			transform:scale(1.1);
+			padding:1px;/*
+			transform:scale(1.1);*/
 		}
 	</style>
 

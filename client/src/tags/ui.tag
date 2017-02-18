@@ -19,7 +19,7 @@
 		setInterval(function(){
 			//works similar to setState from react.
 			self.update({ focusEvent: (self.focusEvent + 1) % self.opts.events.length});
-		}, 1000)
+		}, 10000)
 
 
 		//returns today, tomorrow or otherwise
