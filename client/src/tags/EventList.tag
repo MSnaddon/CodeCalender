@@ -1,12 +1,11 @@
 <EventList>
 	<h2>What's on</h2>
 	<div each={array, day in this.eventDays}>
+
 		<div><h3>{day}</h3></div>
-		<!-- use dynamic styling to show focus -->
-		<!-- use comparison to this.opts.events[this.opts.focusIndex] -->
+
 		<div each={event, i in array} class={event-list-focus: this.focusEvent === event}>
-			<h4>{event.title}</h4>
-			<p>@ {event.time}</p>
+			<h2>{event.title} @ {event.date.toTimeString().slice(0,5)}</h2>
 
 		</div>
 
@@ -15,7 +14,7 @@
 
 	<style>
 		.event-list-focus{
-			background: rgba(255,255,255, 0.6);
+			background: rgba(133,212,255, 0.6);
 			padding:1px;/*
 			transform:scale(1.1);*/
 		}
@@ -35,7 +34,7 @@
 
 		//splits the events into object {day: [events]}
 		this.opts.events.forEach((event)=>{
-			let eventKey = this.opts.getDateString(event.date);
+			let eventKey = event.getRelativeDay();
 			this.eventDays[eventKey] ? this.eventDays[eventKey].push(event) : this.eventDays[eventKey] = [event]
 		})
 

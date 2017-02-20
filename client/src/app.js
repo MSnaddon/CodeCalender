@@ -18,7 +18,7 @@ window.onload = ()=>{
 		else {
 			const data = JSON.parse(this.responseText);
 			const events = Event.parseEvents(data.events)
-			Riot.mount('ui', data);
+			Riot.mount('ui', {events: events});
 		}
 	})
 

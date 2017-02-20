@@ -1,22 +1,20 @@
 <EventDisplay>
 
 	<header id="display-title">{opts.focusEvent.title}</header>
-
-	<article id="display-description">
-		<p each={paragraph, i in opts.focusEvent.description}>
-			{paragraph}
-		</p>
-	</article>
 	<div id="display-time">
-		{opts.getDateString(opts.focusEvent.date)} {opts.focusEvent.time}
+		{opts.focusEvent.getRelativeDay()}
 	</div>
-
-	<div id="hosts">
+	<div if={opts.focusEvent.hosts[0]} id="hosts">
 		Hosts:
 		<ul>
 			<li each={ host, i in opts.focusEvent.hosts } id="display-hosts">{host}</li>
 		</ul>
 	</div>
+	<article id="display-description">
+		<p each={paragraph, i in opts.focusEvent.description}>
+			{paragraph}
+		</p>
+	</article>
 
 
 	<style>
