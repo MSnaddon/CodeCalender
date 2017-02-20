@@ -1,5 +1,7 @@
 import Riot from 'riot'
 
+// import models
+import Event from './models/Event.js'
 import apiRequester from './models/apiRequester.js'
 
 require('./tags/ui.tag')
@@ -15,6 +17,7 @@ window.onload = ()=>{
 		}
 		else {
 			const data = JSON.parse(this.responseText);
+			const events = Event.parseEvents(data.events)
 			Riot.mount('ui', data);
 		}
 	})

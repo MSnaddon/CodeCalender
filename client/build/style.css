@@ -3,7 +3,7 @@ body{
 }
 
 ui{
-	background:#6df; /*Likely be white in long run. Or an image*/
+	background:#fff; /*Likely be white in long run. Or an image*/
 
 	padding:10px;
 	height:99vh;
