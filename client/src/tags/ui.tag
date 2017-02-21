@@ -2,7 +2,6 @@
 
 	<EventDisplay focus-event="{ opts.events[focusEvent] }"></EventDisplay>
 
-
 	<EventList events="{opts.events}" focus-event={focusEvent}></EventList>
 
 

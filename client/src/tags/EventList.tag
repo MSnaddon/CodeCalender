@@ -2,21 +2,44 @@
 	<h2>What's on</h2>
 	<div each={array, day in this.eventDays}>
 
-		<div><h3>{day}</h3></div>
+		<div class="day-header">{day}</div>
 
-		<div each={event, i in array} class={event-list-focus: this.focusEvent === event}>
-			<h2>{event.title} @ {event.date.toTimeString().slice(0,5)}</h2>
-
+		<div each={event, i in array} class={event-list-item: true, event-list-focus: this.focusEvent === event}>
+			<div class="event-list-title">{event.title} </div>
+			<div class="event-list-time">{event.getSimpleTimeString()}<div>
 		</div>
 
 	</div>
 
 
 	<style>
+		.event-list-item{
+			display:flex;
+			flex-flow:row nowrap;
+			justify-content: space-between;
+			min-height:10vh;
+			padding: 0% 2%;
+		}
+		.day-header{
+			font-size:1em;
+			font-weight: bold;
+			padding: 2% 0% 2% 5%;
+			border-bottom:2px solid white;
+		}
+		.event-list-title{
+			font-size:1.5em;
+			align-self: center;
+
+		}
+		.event-list-time{
+			align-self: center;
+			font-size: 1.5em;
+			flex-shrink: 0;
+
+		}
+
 		.event-list-focus{
-			background: rgba(133,212,255, 0.6);
-			padding:1px;/*
-			transform:scale(1.1);*/
+			background: rgba(133,212,255, 0.8);
 		}
 	</style>
 

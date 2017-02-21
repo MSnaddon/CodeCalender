@@ -56,10 +56,6 @@ describe("Event prototype", ()=>{
 			"hosts": ["Rover","Fido"]
 		}];
 
-		let todayEvent = new Event(jsonObject[0]);
-		todayEvent.date = new Date();
-		let tomorrowEvent = new Event(jsonObject[0]);
-		tomorrowEvent.date = new Date(todayEvent.date.getTime() + 86400000)
 
 
 	it("Should parse JSON to protoypes", ()=>{
@@ -70,9 +66,26 @@ describe("Event prototype", ()=>{
 
 	it("should return relative day",()=>{
 		let now = new Date()
+		let todayEvent = new Event(jsonObject[0]);
+		todayEvent.date = new Date();
+		let tomorrowEvent = new Event(jsonObject[0]);
+		tomorrowEvent.date = new Date(todayEvent.date.getTime() + 86400000)
+
 		assert.equal(todayEvent.getRelativeDay(now), "Today")
 		assert.equal(tomorrowEvent.getRelativeDay(now), "Tomorrow")
+	})
 
+	it("should generate 12 hour time string",()=>{
+		let midnight = new Event({title: "", description: [""], 
+			date: "2017-02-20 00:00:00"
+		})
+		let threePM = new Event({title: "", description: [""], 
+			date: "2017-02-20 15:00:00"
+		})
+
+
+		assert.equal( midnight.getSimpleTimeString(), "12:00 am" )
+		assert.equal( threePM.getSimpleTimeString(), "3:00 pm")
 	})
 
 })

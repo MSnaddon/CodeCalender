@@ -1,7 +1,7 @@
 const Event = function({title, description, date, hosts = []}){
 	this.title = title;
 	this.description = description;
-	this.date = new Date(date);
+	this.date = new Date( date );
 	this.hosts = hosts;
 }
 
@@ -20,6 +20,13 @@ Event.prototype = {
 		if (this.date.getTime() < today){return "Today"}
 		if (this.date.getTime() < tomorrow){return "Tomorrow"}
 		return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][this.date.getDay()]
+	},
+	getSimpleTimeString: function(){
+		// \[\d]+\ : one or more numbers
+		// \[\d]{2}\ a sequence of 2 digits 
+		// .* period is any single character, * matches zero or more occurances.
+
+		return this.date.toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3").toLowerCase()
 	}
 }
 
