@@ -11,6 +11,7 @@ describe("An event", function(){
 		event = new Event({
 			title: "Dog walking, advanced class",
 			date: "2017-02-20 16:30:00",
+			imgUrl: "https://static1.squarespace.com/static/55439320e4b0f92b5d6c4c8b/554393f7e4b09befa5d9963f/575ec48b86db43d4838443f4/1485868556423/YOGA.jpg?format=300w",
 			description: [
 				"Dogs will walk you for 1 hour whilst you bring them tennis balls",
 				"Come join the whimsical sniffs and smells of Princes Gardens while our dogs idly slump by playing Pokemon Go.",
@@ -39,6 +40,10 @@ describe("An event", function(){
 
 	it("Should have a date", ()=>{
 		assert.equal( event.date.getDay(), 1 )
+	})
+
+	it("Could contain a URL for image", ()=>{
+		assert.equal(event.imgUrl, "https://static1.squarespace.com/static/55439320e4b0f92b5d6c4c8b/554393f7e4b09befa5d9963f/575ec48b86db43d4838443f4/1485868556423/YOGA.jpg?format=300w")
 	})
 
 
