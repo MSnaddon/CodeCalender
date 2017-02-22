@@ -1,4 +1,5 @@
 <EventDisplay>
+	<img src={opts.focusEvent.imgUrl} id="event-display-image"/>
 	<header id="display-title">
 		{opts.focusEvent.title}
 	</header>
@@ -26,6 +27,8 @@
 		
 		#event-display-image{
 			width:80%;
+			padding:5px;
+			background: white;
 		}
 
 		#display-title{
@@ -52,5 +55,4 @@
 			padding-left: 10px;
 		}
 	</style>
-	console.log(this.opts.focusEvent);
 </EventDisplay>

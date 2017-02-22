@@ -7,7 +7,7 @@ ui{
 	background:#0090C1;
 	color:white;
 	padding:10px;
-	height:99vh;
+	height:98vh;
 	display:flex;
 	flex-flow: row nowrap;
 }
