@@ -1,0 +1,22 @@
+body{
+	margin:0px;
+	font-family: sans-serif;
+}
+
+ui{
+	background:#0090C1;
+	color:white;
+	padding:10px;
+	height:98vh;
+	display:flex;
+	flex-flow: row nowrap;
+}
+
+eventdisplay{
+	flex: 0 1 25%;
+	padding: 0px 1vw;
+}
+
+eventlist{
+	flex-grow: 2;
+}
